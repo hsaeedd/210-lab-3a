@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
 using namespace std;
 
 struct Restaurant
@@ -17,9 +18,21 @@ void outputRestaurant(const Restaurant &);
 
 int main()
 {
-    Restaurant myRestaurant = populateRestaurant();
+    vector<Restaurant> storeRestaurants;
+
+    for(int i = 0; i < 4; i++)
+    {
+        cout << "Enter Restaurant #" << i+1 << "'s information" << endl;
+        storeRestaurants.push_back(populateRestaurant());
+
+    }
+    
     cout << "\nOutputting Restaurant Information:\n";
-    outputRestaurant(myRestaurant);
+    for(int i = 0; i < 4; i++)
+    {
+        outputRestaurant(storeRestaurants[i]);
+    }
+    
 
     return 0;
 }
@@ -47,6 +60,6 @@ void outputRestaurant(const Restaurant &r)
     cout << "\t> Cuisine: " << r.cuisine << endl;
     cout << "\t> Owner: " << r.ownername << endl;
     cout << "\t> Year Opened: " << r.yearopened << endl;
-    cout << "\t> Number of Employees: " << r.employeecount << endl;
+    cout << "\t> Number of Employees: " << r.employeecount << endl << endl;
 
 }
